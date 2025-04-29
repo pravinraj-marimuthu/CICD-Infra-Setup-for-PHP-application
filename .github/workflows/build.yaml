@@ -35,4 +35,4 @@ jobs:
           script: |
             ./deploy.sh
             docker ps
-            echo "I will work"
+            echo "what's up"

@@ -35,4 +35,4 @@ jobs:
           script: |
             ./deploy.sh
             docker ps
-            echo "Testing"
+            echo "Will it work?"

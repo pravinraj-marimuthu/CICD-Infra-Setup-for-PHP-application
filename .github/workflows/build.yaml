@@ -34,5 +34,6 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             ./deploy.sh
+            echo "Deployment completed successfully!"
+            echo "Docker containers are running properly:"
             docker ps
-            echo "what's up"

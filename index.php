@@ -1,4 +1,4 @@
 <?php
 // index.php
-echo "Hello!";
+echo "Hello, Pearl Thoughts!";
 ?>

@@ -4,7 +4,8 @@
 2. Containerized the application using Docker - [Dockerfile](https://github.com/pravinraj-marimuthu/CICD-Infra-Setup-for-PHP-application/blob/master/Dockerfile)/[backend.yaml](https://github.com/pravinraj-marimuthu/CICD-Infra-Setup-for-PHP-application/blob/master/backend.yaml).
 3. My Nginx file which is configured to act as a reverse proxy on host - [nginx.conf](https://github.com/pravinraj-marimuthu/CICD-Infra-Setup-for-PHP-application/blob/master/nginx.conf)
 4. My GitHub Actions workflow which CI/CD'ed this project - [workflows/build.yaml](https://github.com/pravinraj-marimuthu/CICD-Infra-Setup-for-PHP-application/blob/master/.github/workflows/build.yaml)
-5. My Ansible playbooks which automates the infra:
+5. The deployment file that updates the stack and implements the rollback - [deploy.sh](https://github.com/pravinraj-marimuthu/CICD-Infra-Setup-for-PHP-application/blob/master/deploy.sh)
+6. My Ansible playbooks which automates the infra:
       - Tools and Dependencies installation play - [dependencies.yaml](https://github.com/pravinraj-marimuthu/CICD-Infra-Setup-for-PHP-application/blob/master/ansible/dependencies.yaml)
       - Configure Nginx play - [configure_nginx.yaml](https://github.com/pravinraj-marimuthu/CICD-Infra-Setup-for-PHP-application/blob/master/ansible/configure_nginx.yaml)
       - Deployment play - [deploy.yaml](https://github.com/pravinraj-marimuthu/CICD-Infra-Setup-for-PHP-application/blob/master/ansible/deploy.yaml)

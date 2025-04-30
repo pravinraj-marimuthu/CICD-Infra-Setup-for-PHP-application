@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  php:
+    image: pravinrajmarimuthu/php-helloworld:<tag_from_git>
+    ports:
+      - "8000:80"
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          memory: 500M
+        reservations:
+          memory: 200M

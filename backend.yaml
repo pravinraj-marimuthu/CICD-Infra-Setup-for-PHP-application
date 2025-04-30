@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   php:
-    image: pravinrajmarimuthu/php-helloworld:<tag_from_git>
+    image: pravinrajmarimuthu/php-helloworld:70fb236bf3cb984adb02f824406befafe438bd07
     ports:
       - "8000:80"
     deploy:

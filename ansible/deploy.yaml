@@ -1,6 +1,6 @@
 ---
 
-- name: Create directory, initialize Swarm, and deploy Yii2 app
+- name: Create directory, initialize Swarm, and deploy PHP app
   hosts: manager
   become: yes
 

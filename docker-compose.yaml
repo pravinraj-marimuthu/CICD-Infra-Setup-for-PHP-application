@@ -9,7 +9,7 @@ services:
       - '8000:80'
 
     deploy:
-      replicas: 1
+      replicas: 
       resources:
         limits:
           memory: 500M

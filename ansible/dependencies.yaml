@@ -1,28 +1,37 @@
 ---
 
-- name: Setup required tools and dependencies
+- name: Setup Docker, Nginx and Git
   hosts: all
   become: true
 
   tasks:
 
-    - name: Install the required services
-      apt:
-        name:
-          - nginx
-          - git
-          - docker.io
-          - docker-compose
-        state: latest
-        update_cache: yes
+  - name: Docker repo
+    dnf:
+      name:
+        - dnf-plugins-core
 
+  - name: Config
+    shell: dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 
-
-    - name: Start the services
-      service:
-        name: "{{ item }}"
-        state: started
-        enabled: true
-      loop:
+  - name: Install
+    dnf:
+      name:
+        - git
         - nginx
-        - docker
+      state: latest
+
+  - name: Start
+    service:
+      name: "{{ item }}"
+      enabled: true
+      state: started
+    loop:
+      - docker
+      - nginx
+
+  - name: Verify
+    shell: |
+      docker -v
+      nginx -v
+      git -v

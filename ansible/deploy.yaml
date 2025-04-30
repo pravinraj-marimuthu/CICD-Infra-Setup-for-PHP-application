@@ -1,8 +1,10 @@
 ---
 
-- name: Create directory, initialize Swarm, and deploy PHP app
-  hosts: manager
+- name: Create working directory, initialize Swarm, and deploy PHP app
+  hosts: all
   become: yes
+
+  vars_files: vault.yaml
 
   tasks:
 
@@ -14,9 +16,10 @@
 
     - name: Clone the project repo
       git:
-        repo: https://github.com/pravinraj-marimuthu/CICD-Infra-Setup-for-PHP-application.git
+        repo: "https://{{ git_token }}@github.com/pravinraj-marimuthu/CICD-Infra-Setup-for-PHP-application.git"
         dest: /opt/my-php-app
         version: master
+        clone: yes
 
     - name: Initialize Swarm (only if not already initialized)
       shell: docker swarm init
@@ -24,5 +27,6 @@
       failed_when: false
       changed_when: "'Error response from daemon: This node is already part of a swarm' not in swarm_init.stderr"
 
-    - name: Deploy Yii2 stack
-      shell: docker stack deploy -c /opt/my-php-app/docker-compose.yaml webapp_php
+    - name: Deploy the app
+      shell: |
+        docker stack deploy -c /opt/my-php-app/backend.yaml app

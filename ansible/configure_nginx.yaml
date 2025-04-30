@@ -2,7 +2,7 @@
 
 - name: Configure NGINX Reverse Proxy
   hosts: all
-  become: yes 
+  become: yes
 
   vars:
     nginx_proxy_file: /etc/nginx/conf.d/php_conf
@@ -14,10 +14,10 @@
         content: |
           server {
               listen 80;
-              server_name 15.206.90.151;
+              server_name <server_ip>;
 
               location / {
-                  proxy_pass http://localhost:8080;
+                  proxy_pass http://localhost:<port>;
                   proxy_set_header Host $host;
                   proxy_set_header X-Real-IP $remote_addr;
                   proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -25,7 +25,8 @@
               }
           }
 
-    - name: Restart NGINX
+    - name: Restart Nginx
       service:
         name: nginx
         state: restarted
+  

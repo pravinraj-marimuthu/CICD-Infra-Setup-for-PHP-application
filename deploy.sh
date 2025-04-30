@@ -8,6 +8,8 @@ echo
 docker stack deploy -c docker-compose.yaml webapp
 echo
 
+sleep 10
+
 # List the serving container
 
 running_container=$(docker ps | awk '{print $11}' | tail -1)

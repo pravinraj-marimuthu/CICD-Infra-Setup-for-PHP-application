@@ -1,4 +1,4 @@
-name: Docker Image Build and Push
+name: CI/CD setup for a PHP application using Docker and GitHub Actions
 on:
   push:
     branches:
@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
-
+        
       - name: Docker Hub registry login
         uses: docker/login-action@v2
         with:
@@ -26,6 +26,28 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: pravinrajmarimuthu/php-helloworld:${{ github.sha }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install Ansible
+        run: |
+          python3 -m pip install --upgrade pip
+          pip3 install ansible
+          ansible -v
+          
+      - name: Run Ansible Playbook
+        run: |
+          ansible-playbook ansible/dependencies.yaml -i ${{ secrets.EC2_HOST }}
+          ansible-playbook ansible/configure_nginx.yaml -i ${{ secrets.EC2_HOST }}
+
+      - name: Verify the dependencies 
+        run: |
+          docker -v
+          git -v
+          nginx -v
 
       - name: Login to EC2 instance
         uses: appleboy/ssh-action@v1.0.3

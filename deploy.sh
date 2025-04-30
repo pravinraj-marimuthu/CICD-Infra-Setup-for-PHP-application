@@ -7,6 +7,9 @@ echo "Proceeding with the deployment..."
 echo "-------------------------------------------------------------"
 docker stack deploy -c backend.yaml app
 echo "-------------------------------------------------------------"
+echo "Checking for failure in the deployment, will roll-back if any failure occurs..."
+echo "-------------------------------------------------------------"
+docker service update --update-failure-action rollback app_php
 echo "Waiting for the service to be up and running..."
 sleep 10 &
 echo "-------------------------------------------------------------"

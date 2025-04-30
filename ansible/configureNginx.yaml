@@ -2,7 +2,7 @@
 
 - name: Configure NGINX Reverse Proxy
   hosts: all
-  become: yes
+  become: yes 
 
   vars:
     nginx_proxy_file: /etc/nginx/conf.d/php_conf

@@ -1,4 +1,3 @@
 FROM yiisoftware/yii2-php:7.4-apache
-
-# Copy the app code to the container
-COPY . /app
+COPY . /var/www/html
+RUN chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html

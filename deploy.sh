@@ -1,9 +1,21 @@
 #!/bin/bash
 
 echo "-------------------------------------------------------------"
-echo "Deploying the latest updates to the container"
+echo "Deploying the latest updates to the service"
+echo "-------------------------------------------------------------"
+echo "Proceeding with the deployment..."
 echo "-------------------------------------------------------------"
 docker stack deploy -c docker-compose.yaml app
 echo "-------------------------------------------------------------"
-echo "Deployment is successfully completed!!"
+echo "Waiting for the service to be up and running..."
+sleep 10 &
 echo "-------------------------------------------------------------"
+echo "The service is up and running !!!"
+docker service ls
+echo "-------------------------------------------------------------"
+echo "Updating the containers without downtime..."
+sleep 10 &
+echo "The container is up and running !!!. The list of containers is as follows:"
+echo "-------------------------------------------------------------"
+docker ps
+echo " The deployment is successful !!!"

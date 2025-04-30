@@ -23,8 +23,8 @@ jobs:
           run: |
             sudo curl -L "https://github.com/docker/compose/releases/download/v2.15.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
             sudo chmod +x /usr/local/bin/docker-compose
-            docker-compose run --rm php composer update --prefer-dist
-            docker-compose run --rm php composer install    
+            docker-compose run --rm php composer install --prefer-dist
+
 
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v4

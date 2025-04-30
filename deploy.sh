@@ -18,4 +18,4 @@ sleep 10 &
 echo "The container is up and running !!!. The list of containers is as follows:"
 echo "-------------------------------------------------------------"
 docker ps
-echo " The deployment is successful !!!"
+echo " The deployment is successful !!!!"

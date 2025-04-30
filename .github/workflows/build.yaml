@@ -41,7 +41,7 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd ~/php
+            cd /boot/efi/php
             echo "Replacing the image tag in docker-compose.yaml with the new image tag..."
             sed -i 's|image: pravinrajmarimuthu/phpapp:.*|image: pravinrajmarimuthu/phpapp:${{ github.sha }}|' docker-compose.yaml
             ./deploy.sh

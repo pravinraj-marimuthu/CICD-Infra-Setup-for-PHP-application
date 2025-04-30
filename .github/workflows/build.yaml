@@ -42,8 +42,6 @@ jobs:
             echo "Replacing the image tag in backend.yaml with new image tag..."
             echo "--------------------------------------------------------------------------------------"
             sed -i 's|image: pravinrajmarimuthu/php-helloworld:.*|image: pravinrajmarimuthu/php-helloworld:${{ github.sha }}|' backend.yaml
-            echo "--------------------------------------------------------------------------------------"
             echo "Executing the deployment script..."
-            echo "--------------------------------------------------------------------------------------"
             ./deploy.sh
             echo "--------------------------------------------------------------------------------------"

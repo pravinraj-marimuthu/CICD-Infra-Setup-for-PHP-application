@@ -34,7 +34,13 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd /root/php
+            echo "--------------------------------------------------------------------------------------"
+            cd ~/php
             echo "Replacing the image tag in backend.yaml with new image tag..."
+            echo "--------------------------------------------------------------------------------------"
             sed -i 's|image: pravinrajmarimuthu/php-helloworld:.*|image: pravinrajmarimuthu/php-helloworld:${{ github.sha }}|' backend.yaml
+            echo "--------------------------------------------------------------------------------------"
             ./deploy.sh
+            echo "--------------------------------------------------------------------------------------"
+            echo "Deployment executed successfully!!!"
+            echo "--------------------------------------------------------------------------------------"

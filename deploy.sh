@@ -20,8 +20,7 @@ echo "Updating the containers without downtime..."
 sleep 10 &
 echo "The container is up and running !!!. The list of containers is as follows:"
 echo "-------------------------------------------------------------"
-sleep 10 &
-docker ps
 echo " The deployment is successful !!!!"
 echo "-------------------------------------------------------------"
+docker stack ps app --filter "desired-state=running" 
 echo "-------------------------------------------------------------"

@@ -5,7 +5,7 @@ echo "Deploying the latest updates to the service"
 echo "-------------------------------------------------------------"
 echo "Proceeding with the deployment..."
 echo "-------------------------------------------------------------"
-docker stack deploy -c docker-compose.yaml app
+docker stack deploy -c backend.yaml app
 echo "-------------------------------------------------------------"
 echo "Waiting for the service to be up and running..."
 sleep 10 &

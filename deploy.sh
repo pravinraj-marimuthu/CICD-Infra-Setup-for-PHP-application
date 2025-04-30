@@ -19,9 +19,9 @@ echo "The serving container is $running_container"
 echo
 docker ps 
 echo
-docker logs $running_container
-echo 
 echo "Deployment is successfully completed."
+echo
+docker logs $running_container
 echo
 echo "To access the web application, visit "http://15.206.90.151/" in your web browser."
 echo
